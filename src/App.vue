@@ -152,8 +152,8 @@ function generateRandom(min = 20, max = 50) {
 function handleScroll(e) {
   const rocket = groupRocket.value.group;
   const distance = window.scrollY
-  if(distance > valueScroll) rocket.position.y += 0.05
-  else rocket.position.y -= 0.05
+  if(distance > valueScroll) rocket.position.y += 0.01
+  else rocket.position.y -= 0.01
   rocket.rotation.y += 0.05;
   valueScroll = distance
 }
@@ -162,29 +162,29 @@ function onReady(model) {
   model.traverse((child) => {
     if (child.isMesh) {
       if (child.name === "mesh_0") {
-        child.material.color.r = 0.917;
-        child.material.color.g = 0.87;
-        child.material.color.b = 0.905;
+        child.material.color.r = 0.10;
+        child.material.color.g = 0.30;
+        child.material.color.b = 0.28;
       }
       if (child.name === "mesh_1") {
-        child.material.color.r = 0.69;
-        child.material.color.g = 0.898;
-        child.material.color.b = 0.874;
+        child.material.color.r = 0.59;
+        child.material.color.g = 0.76;
+        child.material.color.b = 0.74;
       }
       if (child.name === "mesh_3") {
-        child.material.color.r = 0.69;
-        child.material.color.g = 0.898;
-        child.material.color.b = 0.874;
+        child.material.color.r = 0.62;
+        child.material.color.g = 0.66;
+        child.material.color.b = 0.63;
       }
       if (child.name === "mesh_3") {
-        child.material.color.r = 0.69;
-        child.material.color.g = 0.898;
-        child.material.color.b = 0.874;
+        child.material.color.r = 0.82;
+        child.material.color.g = 0.86;
+        child.material.color.b = 0.86;
       }
       if (child.name === "mesh_4") {
-        child.material.color.r = 0.69;
-        child.material.color.g = 0.898;
-        child.material.color.b = 0.874;
+        child.material.color.r = 0.62;
+        child.material.color.g = 0.66;
+        child.material.color.b = 0.63;
       }
     }
   });
