@@ -151,10 +151,9 @@ function generateRandom(min = 20, max = 50) {
 
 function handleScroll(e) {
   const rocket = groupRocket.value.group;
-  console.log(e)
   const distance = window.scrollY
-  if(distance > valueScroll) rocket.position.y += distance * 0.001
-  else rocket.position.y -= distance * 0.001
+  if(distance > valueScroll) rocket.position.y += 0.05
+  else rocket.position.y -= 0.05
   rocket.rotation.y += 0.05;
   valueScroll = distance
 }
