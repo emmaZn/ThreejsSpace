@@ -105,56 +105,55 @@
 
 <script setup>
 
-import { ref, onMounted, onBeforeUnmount } from "vue";
-const rendererC = ref();
-const meshC = ref();
-const lineC = ref();
-const orbitC = ref();
-const groupC = ref();
-const modelC = ref();
-const groupRocket = ref();
+import { ref, onMounted, onBeforeUnmount } from "vue"
+const rendererC = ref()
+const meshC = ref()
+const lineC = ref()
+const orbitC = ref()
+const groupC = ref()
+const modelC = ref()
+const groupRocket = ref()
 let valueScroll=0
 
 onMounted(() => {
-  window.addEventListener('scroll', handleScroll);
-  const renderer = rendererC.value;
-  const sphere = meshC.value.mesh;
-  const line = lineC.value.mesh;
-  const orbit = orbitC.value.mesh;
-  const group = groupC.value.group;
-  const rocket = groupRocket.value.group;
-  const model = modelC.value.scene;
-  renderer.renderer.setClearColor(0x000000, 0);
+  window.addEventListener('scroll', handleScroll)
+  const renderer = rendererC.value
+  const sphere = meshC.value.mesh
+  const line = lineC.value.mesh
+  const orbit = orbitC.value.mesh
+  const group = groupC.value.group
+  const rocket = groupRocket.value.group
+  const model = modelC.value.scene
+  renderer.renderer.setClearColor(0x000000, 0)
   renderer.onBeforeRender(() => {
-    sphere.rotation.z += 0.01;
-    line.rotation.z += 0.01;
-    orbit.rotation.z += 0.01;
-    group.rotation.y += 0.01;
+    sphere.rotation.z += 0.01
+    line.rotation.z += 0.01
+    orbit.rotation.z += 0.01
+    group.rotation.y += 0.01
     if (model) {
-      rocket.rotation.y += 0.002;
+      rocket.rotation.y += 0.002
     }
-  });
+  })
 })
 
 onBeforeUnmount(() => {
-  window.removeEventListener('scroll', handleScroll);
+  window.removeEventListener('scroll', handleScroll)
 })
+
 function generateRandom(min = 20, max = 50) {
-  let difference = max - min;
-  // generate random number
-  let rand = Math.random();
-  // multiply with difference
+  let difference = max - min
+  let rand = Math.random()
   rand = Math.floor(rand * difference);
-  rand = rand + min;
-  return rand;
+  rand = rand + min
+  return rand
 }
 
 function handleScroll(e) {
-  const rocket = groupRocket.value.group;
+  const rocket = groupRocket.value.group
   const distance = window.scrollY
   if(distance > valueScroll) rocket.position.y += 0.01
   else rocket.position.y -= 0.01
-  rocket.rotation.y += 0.05;
+  rocket.rotation.y += 0.05
   valueScroll = distance
 }
 
@@ -162,29 +161,29 @@ function onReady(model) {
   model.traverse((child) => {
     if (child.isMesh) {
       if (child.name === "mesh_0") {
-        child.material.color.r = 0.10;
-        child.material.color.g = 0.30;
-        child.material.color.b = 0.28;
+        child.material.color.r = 0.10
+        child.material.color.g = 0.30
+        child.material.color.b = 0.28
       }
       if (child.name === "mesh_1") {
-        child.material.color.r = 0.59;
-        child.material.color.g = 0.76;
-        child.material.color.b = 0.74;
+        child.material.color.r = 0.59
+        child.material.color.g = 0.76
+        child.material.color.b = 0.74
       }
       if (child.name === "mesh_3") {
-        child.material.color.r = 0.62;
-        child.material.color.g = 0.66;
-        child.material.color.b = 0.63;
+        child.material.color.r = 0.62
+        child.material.color.g = 0.66
+        child.material.color.b = 0.63
       }
       if (child.name === "mesh_3") {
-        child.material.color.r = 0.82;
-        child.material.color.g = 0.86;
-        child.material.color.b = 0.86;
+        child.material.color.r = 0.82
+        child.material.color.g = 0.86
+        child.material.color.b = 0.86
       }
       if (child.name === "mesh_4") {
-        child.material.color.r = 0.62;
-        child.material.color.g = 0.66;
-        child.material.color.b = 0.63;
+        child.material.color.r = 0.62
+        child.material.color.g = 0.66
+        child.material.color.b = 0.63
       }
     }
   });
